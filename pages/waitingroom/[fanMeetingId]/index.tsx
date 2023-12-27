@@ -16,7 +16,7 @@ import { Role } from "@/types";
 import useJwtToken from "@/hooks/useJwtToken";
 import ChatAndMemo from "@/components/ChatAndMemo";
 import Typography from "@mui/material/Typography";
-import StartFanMeetingDialog from "@/components/InviteDialog/StartFanMeetingDialog";
+import StartFanMeetingDialog from "@/components/dialog/StartFanMeetingDialog";
 
 import { useRouter } from "next/router";
 

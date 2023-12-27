@@ -7,7 +7,7 @@ import PostCard from "@/components/PostCard";
 import { backend_api } from "@/utils/api";
 import { fetchFanMeetings } from "@/hooks/useFanMeetings";
 import { useQuery } from "@tanstack/react-query";
-import ShowDialog from "@/components/ShowDialog";
+import ShowDialog from "@/components/dialog/ShowDialog";
 import { fetchTodayFanmeeting } from "@/hooks/useTodayFanmeeting";
 import Link from "next/link";
 import data from "@/mock/fanMeeting.json";

@@ -19,7 +19,7 @@ import { Box, Grid, Stack } from "@mui/material";
 import IdolStreamView from "@/components/meeting/IdolStreamView";
 import FanStreamView from "@/components/meeting/FanStreamView";
 import Game, { Answer } from "@/components/Game";
-import WinnerDialog from "@/components/WinnerDialog";
+import WinnerDialog from "@/components/dialog/WinnerDialog";
 import { useRouter } from "next/router";
 
 interface NameAndStream {

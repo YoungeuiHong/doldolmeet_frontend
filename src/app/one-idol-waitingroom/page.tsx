@@ -10,7 +10,7 @@ import {
 } from "@/utils/openvidu";
 import { Role, RoomType } from "@/types";
 import useJwtToken from "@/hooks/useJwtToken";
-import JoinIdolRoomDialog from "@/components/InviteDialog/JoinIdolRoomDialog";
+import JoinIdolRoomDialog from "@/components/dialog/JoinIdolRoomDialog";
 
 interface Props {
   fanStream: StreamManager | undefined;

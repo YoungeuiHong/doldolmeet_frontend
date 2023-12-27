@@ -28,7 +28,7 @@ import MotionDetector from "@/components/MotionDetector";
 
 import { fetchFanMeeting } from "@/hooks/fanmeeting";
 import { v4 as uuidv4 } from "uuid";
-import FilterSelectDialog from "@/components/FilterSelectDialog";
+import FilterSelectDialog from "@/components/dialog/FilterSelectDialog";
 import { useAtomValue } from "jotai/react";
 import { languageTargetAtom } from "@/atom";
 import SpeechRecog from "@/components/Speech-Recognition";
