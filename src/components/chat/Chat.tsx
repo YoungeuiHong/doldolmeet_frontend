@@ -36,7 +36,7 @@ const SUPPORTED_TARGETS = [
   { code: "ko", label: "Korean" },
 ];
 
-const ShowChat = ({ roomId }: { roomId: string | undefined }) => {
+const Chat = ({ roomId }: { roomId: string | undefined }) => {
   const [message, setMessage] = useState<any>("");
   const [messages, setMessages] = useState<any[]>([]);
   const [sender, setSender] = useState<string | null>("");
@@ -68,7 +68,6 @@ const ShowChat = ({ roomId }: { roomId: string | undefined }) => {
           },
         );
         setSubscription(_subscription);
-        console.log("💚 subcribe: ", roomId);
 
         // Send
         await _stompClient.send(
@@ -262,4 +261,4 @@ const ShowChat = ({ roomId }: { roomId: string | undefined }) => {
   );
 };
 
-export default ShowChat;
+export default Chat;

@@ -14,7 +14,7 @@ import {
 } from "@/utils/openvidu";
 import { Role } from "@/types";
 import useJwtToken from "@/hooks/useJwtToken";
-import ChatAndMemo from "@/components/ChatAndMemo";
+import ChatAndMemo from "@/components/chat/ChatAndMemo";
 import Typography from "@mui/material/Typography";
 import StartFanMeetingDialog from "@/components/dialog/StartFanMeetingDialog";
 

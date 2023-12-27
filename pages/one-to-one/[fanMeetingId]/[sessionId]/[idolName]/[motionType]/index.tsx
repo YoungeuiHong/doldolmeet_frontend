@@ -21,7 +21,7 @@ import { useRouter } from "next/router";
 import LinearTimerBar from "@/components/ShowTimer";
 import MyStreamView from "@/components/meeting/MyStreamView";
 import PartnerStreamView from "@/components/meeting/PartnerStreamView";
-import ChatAndMemo from "@/components/ChatAndMemo";
+import ChatAndMemo from "@/components/chat/ChatAndMemo";
 import AlertSnackBar from "@/components/Timer";
 import { backend_api, SPRING_URL } from "@/utils/api";
 import MotionDetector from "@/components/MotionDetector";
