@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useTodayFanmeeting } from "@/hooks/useTodayFanmeeting";
-import GradientButton from "@/components/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import { Role } from "@/types";
 import useJwtToken from "@/hooks/useJwtToken";
 import IconButton from "@mui/material/IconButton";

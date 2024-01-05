@@ -15,24 +15,24 @@ import {
 } from "@/utils/openvidu";
 import { Role } from "@/types";
 import useJwtToken, { JwtToken } from "@/hooks/useJwtToken";
-import DeviceControlButton from "@/components/meeting/DeviceControlButton";
+import DeviceControlButton from "@/components/button/DeviceControlButton";
 import { fetchFanToFanMeeting } from "@/hooks/useFanMeetings";
 import { useRouter } from "next/router";
-import LinearTimerBar from "@/components/ShowTimer";
+import LinearTimerBar from "@/components/timer/ShowTimer";
 import MyStreamView from "@/components/meeting/MyStreamView";
 import PartnerStreamView from "@/components/meeting/PartnerStreamView";
 import ChatAndMemo from "@/components/chat/ChatAndMemo";
-import AlertSnackBar from "@/components/Timer";
+import AlertSnackBar from "@/components/snackbar/AlertSnackBar";
 import { backend_api, SPRING_URL } from "@/utils/api";
-import MotionDetector from "@/components/MotionDetector";
+import MotionDetector from "@/components/photo/MotionDetector";
 
 import { fetchFanMeeting } from "@/hooks/fanmeeting";
 import { v4 as uuidv4 } from "uuid";
 import FilterSelectDialog from "@/components/dialog/FilterSelectDialog";
 import { useAtomValue } from "jotai/react";
 import { languageTargetAtom } from "@/atom";
-import SpeechRecog from "@/components/Speech-Recognition";
-import PhotoTimeAlert from "@/components/PhotoTimeAlert";
+import SpeechDetector from "@/components/speech/SpeechDetector";
+import PhotoTimeAlert from "@/components/alert/PhotoTimeAlert";
 
 const OneToOnePage = () => {
   const router = useRouter();
@@ -639,7 +639,7 @@ const OneToOnePage = () => {
           </Grid>
           <Grid item xs={12}>
             {isSubtitleActive && (
-              <SpeechRecog
+              <SpeechDetector
                 sessionId={sessionId}
                 partnerVoice={partnerVoice}
                 username={userName}

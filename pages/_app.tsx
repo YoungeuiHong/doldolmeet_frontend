@@ -6,10 +6,10 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import axios from "axios";
-import AuthContext from "@/components/AuthContext";
-import Header from "@/components/Header";
+import AuthContext from "@/components/provider/AuthProvider";
+import Header from "@/components/header/Header";
 import { Grid } from "@mui/material";
-import CustomThemeProvider from "@/components/ThemeProvider";
+import CustomThemeProvider from "@/components/theme/ThemeProvider";
 
 const defaultQueryFn = async ({ queryKey }) => {
   const { data } = await axios.get(

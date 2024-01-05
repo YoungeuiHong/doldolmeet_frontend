@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 // @ts-ignore
-import GradientButton from "@/components/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import Typography from "@mui/material/Typography";
 
 interface Props {

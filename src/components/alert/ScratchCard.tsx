@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useState } from "react";
-import "./styles/global.css";
-import GradientButton from "@/components/GradientButton";
+import "./scratch-card.module.css";
+import GradientButton from "@/components/button/GradientButton";
 
 const ScratchCard = ({ imageSrc, brushSize, revealPercent }) => {
   const scratchCanvasRef = useRef(null);

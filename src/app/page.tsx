@@ -1,9 +1,9 @@
 "use client";
-import Banner from "@/components/Banner";
+import Banner from "../components/banner/Banner";
 import { Grid, Stack, Typography } from "@mui/material";
 import ForwardIcon from "@mui/icons-material/Forward";
-import GradientButton from "@/components/GradientButton";
-import PostCard from "@/components/PostCard";
+import GradientButton from "@/components/button/GradientButton";
+import PostCard from "@/components/card/PostCard";
 import { backend_api } from "@/utils/api";
 import { fetchFanMeetings } from "@/hooks/useFanMeetings";
 import { useQuery } from "@tanstack/react-query";

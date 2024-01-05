@@ -3,7 +3,7 @@ import Link from "@mui/material/Link";
 import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import SvgColor from "@/components/SvgColor";
+import SvgColor from "../svg/SvgColor";
 
 // ----------------------------------------------------------------------
 export interface Author {

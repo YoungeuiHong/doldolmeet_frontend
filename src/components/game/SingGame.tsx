@@ -13,7 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import GradientButton from "@/components/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import ChatBalloon from "@/components/chat/ChatBalloon";
 import useJwtToken from "@/hooks/useJwtToken";
 import IconButton from "@mui/material/IconButton";

@@ -156,7 +156,6 @@ const Capture = () => {
       >
         <CameraAltIcon sx={{ color: "#FFAFCC" }} />
       </ToggleButton>
-      {/*<PhotoFrame fanImgSrc={fanImgSrc} idolImgSrc={idolImgSrc} />*/}
     </>
   );
 };

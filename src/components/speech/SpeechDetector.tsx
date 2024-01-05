@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -15,7 +15,7 @@ interface Props {
   languageTarget: string;
 }
 
-const SpeechRecog = ({
+const SpeechDetector = ({
   active,
   sessionId,
   partnerVoice,
@@ -124,4 +124,4 @@ const SpeechRecog = ({
   );
 };
 
-export default SpeechRecog;
+export default SpeechDetector;

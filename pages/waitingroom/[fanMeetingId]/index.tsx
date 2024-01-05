@@ -6,7 +6,7 @@ import {
   useMainWaitRoom,
 } from "@/hooks/fanmeeting";
 import React, { useEffect, useState } from "react";
-import ShowVideoStreaming from "@/components/ShowVideoStreaming";
+import YoutubePlayer from "@/components/player/YoutubePlayer";
 import { Connection, OpenVidu } from "openvidu-browser";
 import {
   closeOpenViduConnection,
@@ -236,7 +236,7 @@ const WaitingRoom = () => {
                 height: "40%",
               }}
             >
-              <ShowVideoStreaming />
+              <YoutubePlayer />
             </div>
             <div
               style={{

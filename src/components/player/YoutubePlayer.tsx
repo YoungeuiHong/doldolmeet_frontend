@@ -4,7 +4,7 @@ import axios from "axios";
 import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
-const ShowVideoStreaming = () => {
+const YoutubePlayer = () => {
   const [videoDirectory, setVideoDirectory] = useState("");
   const [videoList, setVideoList] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -61,4 +61,4 @@ const ShowVideoStreaming = () => {
   );
 };
 
-export default ShowVideoStreaming;
+export default YoutubePlayer;

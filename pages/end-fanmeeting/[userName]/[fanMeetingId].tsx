@@ -16,7 +16,7 @@ import { GetApp, Twitter } from "@mui/icons-material";
 import Carousel from "react-material-ui-carousel";
 import axios from "axios";
 import ForwardIcon from "@mui/icons-material/Forward";
-import ScratchCard from "@/components/SecretCard";
+import ScratchCard from "@/components/alert/ScratchCard";
 import { useSearchParams } from "next/navigation";
 import CloseIcon from "@mui/icons-material/Close";
 

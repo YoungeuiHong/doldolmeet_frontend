@@ -1,5 +1,5 @@
 import React from "react";
-import { TypographyOnImage } from "@/components/Typography";
+import { TypographyOnImage } from "@/components/typography/TypographyOnImage";
 import { Role } from "@/types";
 
 interface Props {

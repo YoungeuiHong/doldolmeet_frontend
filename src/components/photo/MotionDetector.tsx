@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import * as tmPose from "@teachablemachine/pose";
 import html2canvas from "html2canvas";
 import { backend_api, openvidu_api } from "@/utils/api";
-import PhotoFrame from "@/components/PhotoFrame";
+import PhotoFrame from "@/components/photo/PhotoFrame";
 import { Role } from "@/types";
 
 interface Props {

@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 // @ts-ignore
-import GradientButton from "@/components/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import React, { useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import Link from "next/link";
-import GradientButton from "@/components/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";

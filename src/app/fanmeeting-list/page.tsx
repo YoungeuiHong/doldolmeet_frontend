@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import useJwtToken from "@/hooks/useJwtToken";
-import SvgColor from "@/components/SvgColor";
+import SvgColor from "../../components/svg/SvgColor";
 
 interface FanMeeting {
   id: number;

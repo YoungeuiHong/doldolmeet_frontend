@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useRef, useState } from "react";
 import { backend_api } from "@/utils/api";
-import GradientButton from "@/components/GradientButton";
+import GradientButton from "@/components/button/GradientButton";
 import { Button, Stack, TextField } from "@mui/material";
 import Typography from "@mui/material/Typography";
 

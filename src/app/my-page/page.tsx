@@ -17,8 +17,8 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import useJwtToken from "@/hooks/useJwtToken";
-import SvgColor from "@/components/SvgColor";
-import GradientButton from "@/components/GradientButton";
+import SvgColor from "../../components/svg/SvgColor";
+import GradientButton from "@/components/button/GradientButton";
 
 // FanMeeting 인터페이스 정의
 interface FanMeeting {
