@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import { backend_api } from "@/utils/api";
 
 interface Props {
-  fanMeetingId: number;
+  fanMeetingId: string | null | undefined;
 }
 
 const OpenViduSessionInfo = ({ fanMeetingId }: Props) => {

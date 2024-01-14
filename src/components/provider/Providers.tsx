@@ -7,7 +7,7 @@ import themes from "@/components/theme/DefaultColors";
 
 const defaultQueryFn = async ({ queryKey }) => {
   const { data } = await axios.get(
-    `https://api.doldolmeet.shop/${queryKey[0]}`,
+    `https://api.doldolmeet.store/${queryKey[0]}`,
   );
   return data;
 };

@@ -145,7 +145,7 @@ const GamePage = () => {
 
   const fetchSSE_idol = async () => {
     const eventSource = new EventSource(
-      `https://api.doldolmeet.shop/fanMeetings/${fanMeetingId}/sse/${userName}`,
+      `https://api.doldolmeet.store/fanMeetings/${fanMeetingId}/sse/${userName}`,
     );
 
     setIdolEventSource(eventSource);
@@ -178,7 +178,7 @@ const GamePage = () => {
 
   const fetchSSE = async () => {
     const eventSource = new EventSource(
-      `https://api.doldolmeet.shop/fanMeetings/${fanMeetingId}/sse/${userName}`,
+      `https://api.doldolmeet.store/fanMeetings/${fanMeetingId}/sse/${userName}`,
     );
 
     setFanEventSource(eventSource);

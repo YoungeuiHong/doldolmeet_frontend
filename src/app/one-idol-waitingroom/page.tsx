@@ -102,7 +102,7 @@ const OneIdolWaitingRoom = ({ fanStream }: Props) => {
 
   const fetchSSE = async () => {
     const eventSource = new EventSource(
-      `https://api.doldolmeet.shop/fanMeetings/${fanMeetingId}/sse/${userName}`,
+      `https://api.doldolmeet.store/fanMeetings/${fanMeetingId}/sse/${userName}`,
     );
     eventSource.addEventListener("connect", (e) => {
       console.log("🥹 연결되었습니다.");

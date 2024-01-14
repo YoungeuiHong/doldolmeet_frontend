@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 // the list of all allowed origins
-const allowedOrigins = ["https://api.doldolmeet.shop"];
+const allowedOrigins = ["https://api.doldolmeet.store"];
 
 export function middleware(req) {
   // retrieve the current response

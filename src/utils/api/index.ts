@@ -3,8 +3,8 @@ import { getSession } from "next-auth/react";
 
 export const SPRING_URL =
   process.env.NODE_ENV === "production"
-    ? "https://api.doldolmeet.shop"
-    : "https://api.doldolmeet.shop";
+    ? "https://api.doldolmeet.store"
+    : "http://localhost:8080";
 
 export const backend_api = () => {
   const defaultOptions = {
@@ -36,8 +36,8 @@ export const backend_api = () => {
 
 export const OPENVIDU_URL =
   process.env.NODE_ENV === "production"
-    ? "https://youngeui-in-jungle.store"
-    : "https://youngeui-in-jungle.store";
+    ? "https://demos.openvidu.io"
+    : "http://localhost:4443";
 
 export const OPENVIDU_SECRET =
   process.env.NODE_ENV === "production" ? "MY_SECRET" : "MY_SECRET";
@@ -52,7 +52,7 @@ export const openvidu_api = axios.create({
 
 export const WS_STOMP_URL =
   process.env.NODE_ENV === "production"
-    ? "https://api.doldolmeet.shop/ws-stomp"
+    ? "https://api.doldolmeet.store/ws-stomp"
     : "http://localhost:8080/ws-stomp";
 
 export const AWS_S3_URL =

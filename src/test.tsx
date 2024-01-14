@@ -11,7 +11,7 @@ const ShowChat = () => {
 
   // const [message, setMessage] = useState("");
 
-  const sock = new SockJS("https://api.doldolmeet.shop/ws-stomp", null, {
+  const sock = new SockJS("https://api.doldolmeet.store/ws-stomp", null, {
     transports: ["websocket"],
     withCredentials: true,
   });

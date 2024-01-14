@@ -143,7 +143,7 @@ const WaitingRoom = () => {
     if (!fanMeetingId || !userName) return;
 
     const eventSource = new EventSource(
-      `https://api.doldolmeet.shop/fanMeetings/${fanMeetingId}/sse/${userName}`,
+      `https://api.doldolmeet.store/fanMeetings/${fanMeetingId}/sse/${userName}`,
     );
 
     setEventSource(eventSource);
