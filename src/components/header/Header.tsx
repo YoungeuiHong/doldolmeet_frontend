@@ -55,23 +55,11 @@ export default function Header() {
     });
   }, [token]);
 
-  useEffect(() => {
-    moveToGameRoom();
-  }, []);
-
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
   const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const moveToGameRoom = async () => {
-    await backend_api()
-      .get(`/fanMeetings/${gameRoomId}/get-game-room-id`)
-      .then((res) => {
-        setSessionId(res.data.data);
-      });
   };
 
   return (
@@ -155,20 +143,6 @@ export default function Header() {
               sx={{ mt: 1 }}
             >
               <MenuList>
-                <MenuItemStyled
-                  onClick={() =>
-                    router.push(`/game-page/${gameRoomId}/${sessionId}`)
-                  }
-                >
-                  <ListItemText>게임방</ListItemText>
-                </MenuItemStyled>
-                <MenuItemStyled
-                  onClick={() =>
-                    router.push(`/end-fanmeeting/${userName}/1?winner=true`)
-                  }
-                >
-                  <ListItemText>종료 페이지</ListItemText>
-                </MenuItemStyled>
                 <MenuItemStyled onClick={() => router.push("/my-page")}>
                   <ListItemText>마이 페이지</ListItemText>
                 </MenuItemStyled>
