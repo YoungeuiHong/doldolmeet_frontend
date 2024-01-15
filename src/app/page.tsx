@@ -4,56 +4,26 @@ import { Grid, Stack, Typography } from "@mui/material";
 import ForwardIcon from "@mui/icons-material/Forward";
 import GradientButton from "@/components/button/GradientButton";
 import PostCard from "@/components/card/PostCard";
-import { backend_api } from "@/utils/api";
 import { fetchFanMeetings } from "@/hooks/useFanMeetings";
 import { useQuery } from "@tanstack/react-query";
 import ShowDialog from "@/components/dialog/ShowDialog";
 import { fetchTodayFanmeeting } from "@/hooks/useTodayFanmeeting";
 import Link from "next/link";
-import data from "@/mock/fanMeeting.json";
-import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
-  // const { data } = useQuery({
-  //   queryKey: ["fanMeetings", "opened"],
-  //   queryFn: ({ queryKey }) => fetchFanMeetings(queryKey[1]),
-  // });
+  const { data: session } = useSession();
 
-  // const { data: todayMeeting } = useQuery({
-  //   queryKey: ["fanMeetings", "today"],
-  //   queryFn: () => fetchTodayFanmyeeting(),
-  // });
+  const { data: openedMeeting } = useQuery({
+    queryKey: ["fanMeetings", "opened"],
+    queryFn: ({ queryKey }) => fetchFanMeetings(queryKey[1]),
+  });
 
-  const [todayMeeting, setTodayMeeting] = useState<any>();
-
-  useEffect(() => {
-    fetchTodayFanmeeting().then((res) => {
-      setTodayMeeting(res);
-    });
-  }, []);
-
-  const moveWaitingRoom = (e) => {
-    e.preventDefault();
-
-    backend_api()
-      .post(
-        "/chat/room",
-        { name },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      )
-      .then((response) => {
-        console.log(response);
-        // setRoom(response.data);
-      })
-      .catch((error) => {
-        console.error(error.message);
-        // setError(error.message);
-      });
-  };
+  const { data: todayMeeting } = useQuery({
+    queryKey: ["fanMeetings", "today"],
+    queryFn: () => fetchTodayFanmeeting(),
+    enabled: !!session?.user,
+  });
 
   return (
     <Grid
@@ -78,7 +48,6 @@ export default function Home() {
           }}
         >
           <Link
-            // href={`/waitingroom?id=${todayMeeting?.data?.id}`}
             href={`/waitingroom/${todayMeeting?.data?.id}`}
             style={{ width: "100%" }}
           >
@@ -140,13 +109,16 @@ export default function Home() {
           </Link>
         </Stack>
       </Grid>
-      {data &&
-        data?.map((meeting, i) => (
+      {openedMeeting &&
+        openedMeeting?.map((meeting, i) => (
           <Grid key={i} item xs={3}>
             <PostCard fanMeeting={meeting} index={1} />
           </Grid>
         ))}
-      <ShowDialog />
+      <ShowDialog
+        todayMeeting={todayMeeting}
+        popupOpen={todayMeeting !== undefined}
+      />
     </Grid>
   );
 }

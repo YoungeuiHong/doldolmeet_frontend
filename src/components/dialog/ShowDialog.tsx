@@ -24,13 +24,11 @@ export interface TodayFanMeeting {
 }
 
 interface Props {
-  todayfanMeeting: TodayFanMeeting | null;
+  todayMeeting: any;
   popupOpen: boolean;
 }
 
-export default function ShowDialog() {
-  const { data: todayMeeting } = useTodayFanmeeting();
-
+export default function ShowDialog({ todayMeeting, popupOpen }) {
   const [role, setRole] = useState<Role>(Role.FAN);
   const [imgSrc, setImgSrc] = useState<string>("");
 
@@ -47,10 +45,9 @@ export default function ShowDialog() {
       }
     });
   }, [token]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(popupOpen);
 
   useEffect(() => {
-    setOpen(todayMeeting !== null && todayMeeting !== undefined);
     setImgSrc(todayMeeting?.data?.imgUrl);
     idolRoomMove(todayMeeting);
   }, [todayMeeting]);
