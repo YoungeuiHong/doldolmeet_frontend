@@ -1,17 +1,42 @@
-"use client";
-import Banner from "../components/banner/Banner";
+import Banner from "@/components/banner/Banner";
 import { Grid, Stack, Typography } from "@mui/material";
 import ForwardIcon from "@mui/icons-material/Forward";
 import GradientButton from "@/components/button/GradientButton";
 import PostCard from "@/components/card/PostCard";
 import { fetchFanMeetings } from "@/hooks/useFanMeetings";
-import { useQuery } from "@tanstack/react-query";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+  useQuery,
+} from "@tanstack/react-query";
 import ShowDialog from "@/components/dialog/ShowDialog";
 import { fetchTodayFanmeeting } from "@/hooks/useTodayFanmeeting";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
-export default function Home() {
+export async function getServerSideProps() {
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["fanMeetings", "opened"],
+    queryFn: ({ queryKey }) => fetchFanMeetings(queryKey[1]),
+  });
+
+  await queryClient.prefetchQuery({
+    queryKey: ["fanMeetings", "today"],
+    queryFn: () => fetchTodayFanmeeting(),
+    // enabled: !!session?.user,
+  });
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
+
+export function Home() {
   const { data: session } = useSession();
 
   const { data: openedMeeting } = useQuery({
@@ -120,5 +145,13 @@ export default function Home() {
         popupOpen={todayMeeting !== undefined}
       />
     </Grid>
+  );
+}
+
+export default function HomeRoute({ dehydratedState }) {
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <Home />
+    </HydrationBoundary>
   );
 }
