@@ -4,12 +4,7 @@ import ForwardIcon from "@mui/icons-material/Forward";
 import GradientButton from "@/components/button/GradientButton";
 import PostCard from "@/components/card/PostCard";
 import { fetchFanMeetings } from "@/hooks/useFanMeetings";
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-  useQuery,
-} from "@tanstack/react-query";
+import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import ShowDialog from "@/components/dialog/ShowDialog";
 import { fetchTodayFanmeeting } from "@/hooks/useTodayFanmeeting";
 import Link from "next/link";
@@ -23,12 +18,6 @@ export async function getServerSideProps() {
     queryFn: ({ queryKey }) => fetchFanMeetings(queryKey[1]),
   });
 
-  await queryClient.prefetchQuery({
-    queryKey: ["fanMeetings", "today"],
-    queryFn: () => fetchTodayFanmeeting(),
-    // enabled: !!session?.user,
-  });
-
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
@@ -36,7 +25,7 @@ export async function getServerSideProps() {
   };
 }
 
-export function Home() {
+export default function Home() {
   const { data: session } = useSession();
 
   const { data: openedMeeting } = useQuery({
@@ -145,13 +134,5 @@ export function Home() {
         popupOpen={todayMeeting !== undefined}
       />
     </Grid>
-  );
-}
-
-export default function HomeRoute({ dehydratedState }) {
-  return (
-    <HydrationBoundary state={dehydratedState}>
-      <Home />
-    </HydrationBoundary>
   );
 }
