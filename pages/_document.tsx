@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         <title>DOLDOLMEET</title>
         <meta
-          property="og:description"
+          name="description"
           content="돌아가며 만나는 나의 아이돌, 돌돌밋"
           key="description"
         />
