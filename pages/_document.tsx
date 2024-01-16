@@ -6,6 +6,11 @@ export default function Document() {
     <Html lang="ko">
       <Head>
         <title>DOLDOLMEET</title>
+        <meta
+          property="og:description"
+          content="돌아가며 만나는 나의 아이돌, 돌돌밋"
+          key="description"
+        />
       </Head>
       <body style={{ backgroundColor: "#F8F8F8" }}>
         <Main />
