@@ -25,32 +25,30 @@ export default function MyApp({ Component, pageProps }) {
   );
 
   return (
-    <div style={{ backgroundColor: "#F8F8F8" }}>
-      <AuthContext>
-        <CustomThemeProvider>
-          <QueryClientProvider client={queryClient}>
-            <HydrationBoundary state={pageProps.dehydratedState}>
-              <Header />
-              <Grid
-                container
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                maxWidth="xl"
-                sx={{
-                  mx: "auto",
-                  width: "100%",
-                  paddingTop: 10,
-                  minHeight: "98vh",
-                }}
-              >
-                <Component {...pageProps} />
-              </Grid>
-            </HydrationBoundary>
-            <ReactQueryDevtools initialIsOpen={true} />
-          </QueryClientProvider>
-        </CustomThemeProvider>
-      </AuthContext>
-    </div>
+    <AuthContext>
+      <CustomThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <HydrationBoundary state={pageProps.dehydratedState}>
+            <Header />
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              maxWidth="xl"
+              sx={{
+                mx: "auto",
+                width: "100%",
+                paddingTop: 10,
+                minHeight: "98vh",
+              }}
+            >
+              <Component {...pageProps} />
+            </Grid>
+          </HydrationBoundary>
+          <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
+      </CustomThemeProvider>
+    </AuthContext>
   );
 }
