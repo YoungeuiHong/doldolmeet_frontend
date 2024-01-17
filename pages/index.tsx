@@ -109,7 +109,13 @@ export default function Home() {
           spacing={2}
           sx={{ marginTop: 2 }}
         >
-          <Typography variant="h3" sx={{ color: "#ed6ea0", fontWeight: 800 }}>
+          <Typography
+            variant="h3"
+            sx={{
+              color: "#e85b94",
+              fontWeight: 800,
+            }}
+          >
             OPEN
           </Typography>
           <Link href={"/fanmeeting-list"}>

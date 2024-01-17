@@ -92,7 +92,7 @@ export default function PostCard({ fanMeeting, index }: Props) {
       component="div"
       sx={{
         mb: 2,
-        color: "text.disabled",
+        color: "#5A6A85",
       }}
     >
       {covertDateTime(startTime)}
