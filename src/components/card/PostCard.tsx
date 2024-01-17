@@ -53,6 +53,7 @@ export default function PostCard({ fanMeeting, index }: Props) {
 
   const renderTitle = (
     <Link
+      href={`/fanmeeting-list/${id}`}
       color="inherit"
       variant="h6"
       underline="hover"
