@@ -9,7 +9,12 @@ export default function Banner() {
     <Carousel sx={{ height: 350 }}>
       {imageUrls.map((url, i) => (
         <div key={i} style={{ display: "flex", justifyContent: "center" }}>
-          <Image src={banner_img} alt={"banner"} height={350} />
+          <Image
+            src={banner_img}
+            alt={"banner"}
+            height={350}
+            loading={"eager"}
+          />
         </div>
       ))}
     </Carousel>
