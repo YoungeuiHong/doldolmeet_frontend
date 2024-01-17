@@ -9,6 +9,7 @@ import ShowDialog from "@/components/dialog/ShowDialog";
 import { fetchTodayFanmeeting } from "@/hooks/useTodayFanmeeting";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
+import TodayMeetingBanner from "@/components/banner/TodayMeetingBanner";
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
@@ -61,43 +62,7 @@ export default function Home() {
             marginTop: 4,
           }}
         >
-          <Link
-            href={`/waitingroom/${todayMeeting?.data?.id}`}
-            style={{ width: "100%" }}
-          >
-            <Stack
-              component="div"
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-              spacing={2}
-              sx={{
-                backgroundImage: `url('/banner.jpeg')`,
-                backgroundSize: "cover",
-                width: "100%",
-                height: "120px",
-                borderRadius: "10px",
-                position: "relative",
-              }}
-            >
-              <Typography
-                variant="h3"
-                sx={{
-                  color: "white",
-                  fontWeight: 800,
-                  position: "absolute",
-                  textAlign: "center",
-                  width: "100%",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              >
-                당신의 {todayMeeting?.data?.title ?? "팬미팅"} 놓치지 마세요!
-                지금 바로 클릭하세요!
-              </Typography>
-            </Stack>
-          </Link>
+          <TodayMeetingBanner todayMeeting={todayMeeting} />
         </Grid>
       )}
 
