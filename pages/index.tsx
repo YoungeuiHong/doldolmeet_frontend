@@ -50,7 +50,7 @@ export default function Home() {
       <Grid item xs={12} sx={{ marginTop: 1 }}>
         <Banner />
       </Grid>
-      {todayMeeting !== null && todayMeeting?.data !== null && (
+      {todayMeeting?.data && (
         <Grid
           item
           xs={12}
@@ -125,7 +125,7 @@ export default function Home() {
       </Grid>
       {openedMeeting &&
         openedMeeting?.map((meeting, i) => (
-          <Grid key={i} item xs={3}>
+          <Grid key={i} item xs={6} md={3}>
             <PostCard fanMeeting={meeting} index={1} />
           </Grid>
         ))}
