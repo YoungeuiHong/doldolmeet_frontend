@@ -4,6 +4,7 @@ import Card from "@mui/material/Card";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import SvgColor from "../svg/SvgColor";
+import { covertDateTime } from "@/utils/datetime";
 
 // ----------------------------------------------------------------------
 export interface Author {
@@ -33,6 +34,7 @@ interface Props {
   fanMeeting: FanMeeting;
   index: number;
 }
+
 export default function PostCard({ fanMeeting, index }: Props) {
   const { id, imgUrl, profileImgUrl, title, startTime } = fanMeeting;
 
@@ -93,7 +95,7 @@ export default function PostCard({ fanMeeting, index }: Props) {
         color: "text.disabled",
       }}
     >
-      {startTime}
+      {covertDateTime(startTime)}
     </Typography>
   );
 
