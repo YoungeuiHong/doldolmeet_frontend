@@ -1,7 +1,6 @@
 import Banner from "@/components/banner/Banner";
-import { Grid, Stack, Typography } from "@mui/material";
+import { Button, Grid, Stack, Typography } from "@mui/material";
 import ForwardIcon from "@mui/icons-material/Forward";
-import GradientButton from "@/components/button/GradientButton";
 import PostCard from "@/components/card/PostCard";
 import { fetchFanMeetings } from "@/hooks/useFanMeetings";
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
@@ -37,7 +36,7 @@ export default function Home() {
   const { data: todayMeeting } = useQuery({
     queryKey: ["fanMeetings", "today"],
     queryFn: () => fetchTodayFanmeeting(),
-    enabled: !!session?.user,
+    // enabled: !!session?.user,
   });
 
   return (
@@ -78,13 +77,18 @@ export default function Home() {
             OPEN
           </Typography>
           <Link href={"/fanmeeting-list"}>
-            <GradientButton
+            <Button
               variant="contained"
               endIcon={<ForwardIcon />}
-              sx={{ borderRadius: "10px" }}
+              sx={{
+                borderRadius: "10px",
+                color: "#FFFFFF",
+                fontWeight: 700,
+                letterSpacing: 2,
+              }}
             >
               전체보기
-            </GradientButton>
+            </Button>
           </Link>
         </Stack>
       </Grid>
@@ -94,10 +98,9 @@ export default function Home() {
             <PostCard fanMeeting={meeting} index={1} />
           </Grid>
         ))}
-      <ShowDialog
-        todayMeeting={todayMeeting}
-        popupOpen={todayMeeting !== undefined}
-      />
+      {todayMeeting && (
+        <ShowDialog todayMeeting={todayMeeting} popupOpen={true} />
+      )}
     </Grid>
   );
 }

@@ -1,13 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import {
+  Box,
   Dialog,
   DialogActions,
+  DialogContent,
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
 import Link from "next/link";
-import { useTodayFanmeeting } from "@/hooks/useTodayFanmeeting";
 import GradientButton from "@/components/button/GradientButton";
 import { Role } from "@/types";
 import useJwtToken from "@/hooks/useJwtToken";
@@ -15,6 +16,9 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { backend_api } from "@/utils/api";
 import Typography from "@mui/material/Typography";
+import { FanMeeting } from "@/components/card/PostCard";
+import Image from "next/image";
+import { grey } from "@mui/material/colors";
 
 export interface TodayFanMeeting {
   id: number;
@@ -24,7 +28,7 @@ export interface TodayFanMeeting {
 }
 
 interface Props {
-  todayMeeting: any;
+  todayMeeting: FanMeeting;
   popupOpen: boolean;
 }
 
@@ -48,7 +52,7 @@ export default function ShowDialog({ todayMeeting, popupOpen }) {
   const [open, setOpen] = useState(popupOpen);
 
   useEffect(() => {
-    setImgSrc(todayMeeting?.data?.imgUrl);
+    setImgSrc(todayMeeting?.imgUrl);
     idolRoomMove(todayMeeting);
   }, [todayMeeting]);
 
@@ -91,13 +95,17 @@ export default function ShowDialog({ todayMeeting, popupOpen }) {
       onClose={handleClose}
       PaperProps={{
         style: {
-          width: "40vw",
+          width: "auto",
           height: "auto",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: 10,
+          padding: "20px 40px 30px 40px",
         },
       }}
     >
-      <DialogTitle style={{ textAlign: "center" }}>
-        <Typography variant="h3">{todayMeeting?.data?.title}</Typography>
+      <DialogTitle sx={{ mb: 1 }}>
         <IconButton
           aria-label="close"
           onClick={() => setOpen(false)}
@@ -111,60 +119,56 @@ export default function ShowDialog({ todayMeeting, popupOpen }) {
           <CloseIcon />
         </IconButton>
       </DialogTitle>
-
       {role === Role.FAN && (
         <>
-          <DialogContentText
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <img
-              src={imgSrc}
-              alt="이미지"
-              style={{
-                maxWidth: "70%",
-                maxHeight: "80%",
-                width: "auto",
-                height: "auto",
+          <DialogContent>
+            <Box
+              sx={{
                 position: "relative",
-                borderRadius: 10,
-                marginBottom: 10,
+                margin: "auto",
+                width: "100%",
+                height: 300,
               }}
-              onError={() => setImgSrc("/images/fanmeeting/riize_cover.jpeg")}
-            />
-          </DialogContentText>
-          <DialogTitle style={{ textAlign: "center" }}>
-            시작시간이 {formatDate(todayMeeting?.data?.startTime)} 입니다.
-          </DialogTitle>
-          <DialogContentText style={{ textAlign: "center" }}>
-            당신의 아이돌을 만나기 위해{" "}
-            <span style={{ color: "#ed6ea0" }}>이동하기</span> 버튼을
-            눌러주세요.
-          </DialogContentText>
-          <DialogTitle style={{ textAlign: "center" }}></DialogTitle>
-          <DialogActions style={{ justifyContent: "space-between" }}>
-            {todayMeeting?.data?.id && (
-              <Link
-                href={`/waitingroom/${todayMeeting?.data?.id}`}
+            >
+              <Image
+                src={imgSrc}
+                alt="이미지"
+                fill
                 style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  display: "block", // 링크를 블록 레벨 요소로 설정
-                  width: "100%", // 전체 폭을 사용하도록 설정
+                  borderRadius: 10,
+                  objectFit: "cover",
                 }}
+              />
+            </Box>
+            <DialogContentText sx={{ textAlign: "center", mt: 2 }}>
+              <Typography variant={"h5"} sx={{ color: grey["900"], mb: 1 }}>
+                {todayMeeting?.title}
+              </Typography>
+              <Typography variant={"body1"}>
+                곧 팬미팅이 시작될 예정이에요!
+              </Typography>
+              <Typography variant={"body1"}>
+                당신의 아이돌을 만나기 위해 이동하기 버튼을 눌러주세요.
+              </Typography>
+            </DialogContentText>
+          </DialogContent>
+          {todayMeeting?.id && (
+            <Link
+              href={`/waitingroom/${todayMeeting?.id}`}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                display: "block", // 링크를 블록 레벨 요소로 설정
+                width: "100%", // 전체 폭을 사용하도록 설정
+              }}
+            >
+              <GradientButton
+                sx={{ width: "100%", height: 45, borderRadius: 4 }}
               >
-                <GradientButton
-                  sx={{ width: "100%", height: 45, borderRadius: 4 }}
-                >
-                  이동하기
-                </GradientButton>
-              </Link>
-            )}
-          </DialogActions>
+                이동하기
+              </GradientButton>
+            </Link>
+          )}
         </>
       )}
       {role === Role.IDOL && (
@@ -196,15 +200,15 @@ export default function ShowDialog({ todayMeeting, popupOpen }) {
             오늘의 팬미팅이 시작되었습니다.
           </DialogContentText>
           <DialogTitle style={{ textAlign: "center" }}>
-            시작시간이 {formatDate(todayMeeting?.data?.startTime)} 입니다.
+            시작시간이 {formatDate(todayMeeting?.startTime)} 입니다.
           </DialogTitle>
           <DialogContentText style={{ textAlign: "center" }}>
             팬미팅을 시작하시겠습니까?
           </DialogContentText>
           <DialogActions style={{ justifyContent: "space-between" }}>
-            {todayMeeting?.data?.id && sessionId && idolName && motionType && (
+            {todayMeeting?.id && sessionId && idolName && motionType && (
               <Link
-                href={`one-to-one/${todayMeeting?.data?.id}/${sessionId}/${idolName}/${motionType}`}
+                href={`one-to-one/${todayMeeting?.id}/${sessionId}/${idolName}/${motionType}`}
                 style={{
                   textDecoration: "none",
                   color: "inherit",

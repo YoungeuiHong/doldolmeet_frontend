@@ -1,6 +1,7 @@
 "use client";
 import {
   AppBar,
+  Button,
   ListItemText,
   MenuItem,
   MenuList,
@@ -157,14 +158,20 @@ export default function Header() {
             href="/login"
             style={{ textDecoration: "none", marginLeft: "8px" }}
           >
-            <GradientButton
+            <Button
+              id={"login"}
               variant="contained"
               disableElevation
-              sx={{ px: 3, borderRadius: 10 }}
+              sx={{
+                px: 3,
+                borderRadius: 10,
+                fontWeight: 700,
+                letterSpacing: 2,
+              }}
               onClick={() => signIn()}
             >
               {"로그인"}
-            </GradientButton>
+            </Button>
           </Link>
         )}
       </Toolbar>
