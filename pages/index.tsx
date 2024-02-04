@@ -41,13 +41,7 @@ export default function Home() {
   });
 
   return (
-    <Grid
-      container
-      direction="row"
-      alignItems="center"
-      maxWidth="lg"
-      spacing={2}
-    >
+    <Grid container maxWidth="lg" spacing={2} alignItems={"flex-start"}>
       <Grid item xs={12} sx={{ marginTop: 1 }}>
         <Banner />
       </Grid>

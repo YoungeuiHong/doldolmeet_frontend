@@ -95,7 +95,8 @@ export default function PostCard({ fanMeeting, index }: Props) {
         color: "#5A6A85",
       }}
     >
-      {covertDateTime(startTime)}
+      {/*{covertDateTime(startTime)}*/}
+      {startTime}
     </Typography>
   );
 

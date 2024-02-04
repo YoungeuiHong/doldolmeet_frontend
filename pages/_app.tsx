@@ -34,7 +34,7 @@ export default function MyApp({ Component, pageProps }) {
               container
               direction="row"
               justifyContent="center"
-              alignItems="center"
+              // alignItems="center"
               maxWidth="xl"
               sx={{
                 mx: "auto",
