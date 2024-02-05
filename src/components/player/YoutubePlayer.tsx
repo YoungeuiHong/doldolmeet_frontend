@@ -51,12 +51,11 @@ const YoutubePlayer = () => {
 
   return (
     <ReactPlayer
-      url="https://www.youtube.com/watch?v=jxeJUX9z91I"
+      url="https://youtu.be/UNo0TG9LwwI?feature=shared"
       controls
       width="100%"
-      height="50vh"
+      height="55vh"
       loop={true}
-      volume={0.05}
     />
   );
 };

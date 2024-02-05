@@ -37,6 +37,7 @@ const ChatAndMemo = ({ chatRoomId, height }: Props) => {
           sx={{ width: "100%", height: "100%" }}
         >
           <Button
+            id={"chat-tab"}
             variant={chatOpen ? "contained" : "text"}
             onClick={() => setChatOpen(true)}
             sx={{
@@ -57,6 +58,7 @@ const ChatAndMemo = ({ chatRoomId, height }: Props) => {
             </Typography>
           </Button>
           <Button
+            id={"memo-tab"}
             variant={chatOpen ? "text" : "contained"}
             onClick={() => setChatOpen(false)} // 여기를 수정
             sx={{

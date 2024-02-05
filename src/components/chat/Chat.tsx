@@ -161,22 +161,22 @@ const Chat = ({ roomId }: { roomId: string | undefined }) => {
     >
       {/* 번역 언어 선택 박스 */}
       <FormControl
+        size="small"
         sx={{
           position: "absolute",
-          left: "65%",
-          minWidth: 120,
-          mt: 3,
+          right: "5%",
           zIndex: 1,
+          mt: 3,
+          p: 1,
         }}
-        size="small"
       >
         {/* 언어 선택용 Select */}
         <Select
           labelId="demo-select-small-label"
-          id="demo-select-small"
+          id="language-select-form"
           value={langTarget}
           onChange={(e) => setLangTarget(e.target.value)}
-          style={{ textAlign: "center" }}
+          sx={{ textAlign: "center" }}
         >
           <MenuItem disabled value="">
             <em>언어 선택</em>

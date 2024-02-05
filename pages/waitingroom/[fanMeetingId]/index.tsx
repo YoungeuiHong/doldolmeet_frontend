@@ -1,5 +1,5 @@
 "use client";
-import { Grid, Stack } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import {
   fetchFanMeeting,
   useFanMeeting,
@@ -17,8 +17,11 @@ import useJwtToken from "@/hooks/useJwtToken";
 import ChatAndMemo from "@/components/chat/ChatAndMemo";
 import Typography from "@mui/material/Typography";
 import StartFanMeetingDialog from "@/components/dialog/StartFanMeetingDialog";
-
 import { useRouter } from "next/router";
+import { grey } from "@mui/material/colors";
+import MockLinearProgress from "@/components/progress/LinearProgressBar";
+import WaitingRoomTour from "./product-tour";
+import { CallBackProps } from "react-joyride";
 
 interface NextRoomEvent {
   nextRoomId: string;
@@ -188,7 +191,8 @@ const WaitingRoom = () => {
   const joinNextRoom = async () => {
     await leaveWaitingRoom();
     router.push(
-      `/one-idol-waitingroom?fanMeetingId=${fanMeetingId}&sessionId=${nextRoomId}`,
+      // `/one-idol-waitingroom?fanMeetingId=${fanMeetingId}&sessionId=${nextRoomId}`,
+      `/one-to-one/3/4/jungkook/bigHeart`,
     );
   };
 
@@ -209,9 +213,18 @@ const WaitingRoom = () => {
     }
   };
 
+  const productTourCallback = (data: CallBackProps) => {
+    const { type } = data;
+
+    if (type === "tour:end") {
+      setPopupOpen(true);
+    }
+  };
+
   return (
     <>
       <Grid
+        id={"waiting-room"}
         container
         direction="row"
         justifyContent="space-between"
@@ -238,62 +251,37 @@ const WaitingRoom = () => {
             >
               <YoutubePlayer />
             </div>
-            <div
-              style={{
-                position: "relative",
+            <Stack
+              id={"waiting-info"}
+              direction={"column"}
+              justifyContent={"center"}
+              alignItems={"center"}
+              spacing={3}
+              sx={{
                 width: "100%",
-                height: "30%",
+                height: "25vh",
+                borderRadius: 3,
+                backgroundColor: grey["200"],
               }}
             >
               <Typography
                 variant="h3"
                 sx={{
-                  textAlign: "center",
-                  position: "absolute",
-                  top: "45%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
                   zIndex: 1,
                   fontWeight: 700,
                   color: "#212121",
-                  marginBottom: 10,
+                  textAlign: "center",
                 }}
               >
                 당신은 {pepleAhead + 1}번째 순서입니다!
               </Typography>
-              <Typography
-                variant="h5"
-                sx={{
-                  textAlign: "center",
-                  position: "absolute",
-                  top: "70%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  zIndex: 1,
-                  fontWeight: 700,
-                  color: "#212121",
-                  marginBottom: 10,
-                }}
-              >
-                잠시만 기다려주세요...
-              </Typography>
-
-              <img
-                src={"/banner.jpeg"}
-                alt="조금만 기다려주세요"
-                style={{
-                  height: "27vh",
-                  width: "100%",
-                  borderRadius: 20,
-                  objectFit: "cover",
-                  position: "relative",
-                  zIndex: 0,
-                }}
-              />
-            </div>
+              <Box sx={{ width: "80%" }}>
+                <MockLinearProgress />
+              </Box>
+            </Stack>
           </Stack>
         </Grid>
-        <Grid item xs={4} sx={{ height: "70%" }}>
+        <Grid item xs={4}>
           <ChatAndMemo chatRoomId={fanMeeting?.chatRoomId} height={"75vh"} />
         </Grid>
       </Grid>
@@ -302,6 +290,7 @@ const WaitingRoom = () => {
         handleClose={handleClose}
         handleEnter={joinNextRoom}
       />
+      <WaitingRoomTour callback={productTourCallback} />
     </>
   );
 };

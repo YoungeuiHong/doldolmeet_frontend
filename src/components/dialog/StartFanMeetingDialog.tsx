@@ -1,13 +1,14 @@
 import {
+  Box,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
 } from "@mui/material";
 // @ts-ignore
 import GradientButton from "@/components/button/GradientButton";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
 
 interface Props {
   open: boolean;
@@ -28,13 +29,22 @@ const StartFanMeetingDialog = ({ open, handleClose, handleEnter }: Props) => {
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          <img
-            src="/images/welcome_majongs.gif"
+        <Box
+          sx={{
+            width: 350,
+            height: 350,
+            borderRadius: 2,
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          <Image
+            src="/hi.gif"
             alt="invite"
-            style={{ width: "350px", borderRadius: 20 }}
+            style={{ objectFit: "cover" }}
+            fill={true}
           />
-        </DialogContentText>
+        </Box>
       </DialogContent>
       <DialogActions>
         <GradientButton
