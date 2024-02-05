@@ -6,7 +6,7 @@ import {
   Session,
   StreamManager,
 } from "openvidu-browser";
-import { Grid, Stack } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import {
@@ -33,6 +33,9 @@ import { useAtomValue } from "jotai/react";
 import { languageTargetAtom } from "@/atom";
 import SpeechDetector from "@/components/speech/SpeechDetector";
 import PhotoTimeAlert from "@/components/alert/PhotoTimeAlert";
+import OneToOneTour from "./product-tour";
+import { grey } from "@mui/material/colors";
+import { CallBackProps } from "react-joyride";
 
 const OneToOnePage = () => {
   const router = useRouter();
@@ -132,7 +135,7 @@ const OneToOnePage = () => {
   const [filterPopupOpen, setFilterPopupOpen] = useState(false);
 
   /* 남은 통화 시간 */
-  const [timeLimit, setTimeLimit] = useState(50);
+  const [timeLimit, setTimeLimit] = useState(60);
 
   /* EventSource */
   const [fanEventSource, setFanEventSource] = useState<EventSource | null>(
@@ -545,6 +548,18 @@ const OneToOnePage = () => {
     setFilterPopupOpen(false);
   };
 
+  const productTourCallback = (data: CallBackProps) => {
+    const { type, step, action, lifecycle } = data;
+
+    if (step.target === "#subtitle-bar" && lifecycle === "tooltip") {
+      setEndSoon(true);
+    }
+
+    if (type === "tour:end") {
+      window.location.href = "/end-fanmeeting/user/3";
+    }
+  };
+
   return (
     <Grid container spacing={2}>
       <Grid
@@ -589,14 +604,8 @@ const OneToOnePage = () => {
               />
             </Stack>
           </Grid>
-          <Grid
-            item
-            id="video-container"
-            xs={12}
-            container
-            justifyContent="space-between"
-          >
-            <Grid item xs={6}>
+          <Grid item id="video-container" xs={12}>
+            <Stack direction={"row"} spacing={1}>
               {role === Role.IDOL ? (
                 <MyStreamView
                   name={`😎 ${idolName ?? "아이돌"}`}
@@ -615,8 +624,6 @@ const OneToOnePage = () => {
                   motionType={motionType}
                 />
               )}
-            </Grid>
-            <Grid item xs={6}>
               {role === Role.FAN ? (
                 <MyStreamView
                   name={`😍 ${myNickName ?? "팬"}`}
@@ -635,16 +642,26 @@ const OneToOnePage = () => {
                   motionType={motionType}
                 />
               )}
-            </Grid>
+            </Stack>
           </Grid>
-          <Grid item xs={12}>
-            {isSubtitleActive && (
+          <Grid id={"subtitle-bar"} item xs={12}>
+            {isSubtitleActive ? (
               <SpeechDetector
                 sessionId={sessionId}
                 partnerVoice={partnerVoice}
                 username={userName}
                 active={isSubtitleActive}
                 languageTarget={langTarget}
+              />
+            ) : (
+              <Box
+                sx={{
+                  backgroundColor: grey["300"],
+                  width: "100%",
+                  height: "6vh",
+                  borderRadius: 2,
+                  mt: 1,
+                }}
               />
             )}
           </Grid>
@@ -688,6 +705,7 @@ const OneToOnePage = () => {
         onClickApplyFilter={onClickApplyFilter}
       />
       <PhotoTimeAlert open={endSoon} motionType={motionType} />
+      <OneToOneTour callback={productTourCallback} />
     </Grid>
   );
 };

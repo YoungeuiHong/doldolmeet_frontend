@@ -43,8 +43,7 @@ export default function WaitingRoomTour({ callback }: Props) {
         },
         {
           target: "#memo-tab",
-          content:
-            "아이돌에게 하고 싶은 말을 깜빡하지 않도록 메모해놓을 수 있어요.",
+          content: "하고 싶은 말을 깜빡하지 않도록 메모해놓을 수 있어요.",
           disableBeacon: true,
           placement: "left",
         },

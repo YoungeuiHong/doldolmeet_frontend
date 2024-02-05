@@ -47,7 +47,7 @@ const PhotoTimeAlert = ({ open, motionType }: Props) => {
   }, [open]);
 
   return (
-    <Fade in={showAlert} timeout={500}>
+    <Fade id={"photo-time-alert"} in={open} timeout={500}>
       <Paper
         elevation={10}
         sx={{

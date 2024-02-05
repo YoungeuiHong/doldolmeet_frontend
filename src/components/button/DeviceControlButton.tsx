@@ -40,7 +40,10 @@ const DeviceControlButton = ({
   }, [mic, camera]);
 
   return (
-    <ToggleButtonGroup sx={{ backgroundColor: "#FFFFFF", marginRight: 3 }}>
+    <ToggleButtonGroup
+      id="device-control-button"
+      sx={{ backgroundColor: "#FFFFFF", marginRight: 3 }}
+    >
       <ToggleButton
         value="underlined"
         aria-label="underlined"
@@ -62,16 +65,6 @@ const DeviceControlButton = ({
         ) : (
           <VideocamOffIcon sx={{ color: "#bdbdbd" }} />
         )}
-      </ToggleButton>
-      {/*<Capture />*/}
-      <ToggleButton
-        value="underlined"
-        aria-label="underlined"
-        onClick={onClickFilter}
-      >
-        <FaceRetouchingNaturalIcon
-          sx={{ color: filterOn ? "#FFAFCC" : "#bdbdbd" }}
-        />
       </ToggleButton>
       {/* 자막 켜기 / 끄기 */}
       <ToggleButton
